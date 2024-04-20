@@ -2,9 +2,20 @@
 import express from 'express'; 
 import { PORT, mongoDBURL } from './config.js'; 
 import mongoose from 'mongoose';
+import multer from 'multer';  //photo upload package
+import cors from 'cors'
+import { createHeavyHaulCollection } from './models/equipmentModel.js';
+// import cors ;
 
+const collection = createHeavyHaulCollection(); 
 
 const app = express(); 
+const upload = multer({dest: 'uploads/'});  //photo upload 
+
+// middleware
+
+app.use(cors());
+app.use(express.json()); 
 
 app.get('/', (request, response) => { 
     console.log(request)
@@ -17,8 +28,9 @@ connectToMongoDB(mongoDBURL);
 async function connectToMongoDB(mongoDBURL) { 
     try { 
         await mongoose.connect(mongoDBURL); 
-        console.log('Connected to MongoDB'); 
-        //port listening 
+        console.log('Connected to MongoDB');
+        //port listening for incoming requests
+        collection
         app.listen(PORT, () => { 
             console.log(`server listening on port: ${PORT}`)
         });

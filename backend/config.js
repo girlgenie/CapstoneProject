@@ -2,4 +2,5 @@
 export const PORT = 5555; 
 
 //mongodb database with collection name
-export const mongoDBURL = "mongodb+srv://rockellegardner:capstone@sba319.byijayw.mongodb.net/equipment-collection?retryWrites=true&w=majority&appName=SBA319"
+export const mongoDBURL = "mongodb+srv://pressdkustoms:capstone@rockellefirstdb.wrb0dez.mongodb.net/?retryWrites=true&w=majority&appName=RockelleFirstDB"
+
